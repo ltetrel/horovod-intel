@@ -51,10 +51,6 @@ RUN pip install numpy \
         keras \
         h5py
 
-# Install graphnet dependencies
-COPY requirements.txt /
-RUN pip install --requirement /requirements.txt
-
 RUN pip install https://download.pytorch.org/whl/cu100/torch-${PYTORCH_VERSION}%2Bcu100-$(python -c "import wheel.pep425tags as w; print('-'.join(w.get_supported()[0][:-1]))")-linux_x86_64.whl \
         https://download.pytorch.org/whl/cu100/torchvision-${TORCHVISION_VERSION}%2Bcu100-$(python -c "import wheel.pep425tags as w; print('-'.join(w.get_supported()[0][:-1]))")-linux_x86_64.whl
 RUN pip install mxnet-cu100==${MXNET_VERSION}
@@ -90,5 +86,9 @@ RUN cat /etc/ssh/ssh_config | grep -v StrictHostKeyChecking > /etc/ssh/ssh_confi
 RUN apt-get install -y --no-install-recommends subversion && \
     svn checkout https://github.com/horovod/horovod/trunk/examples && \
     rm -rf /examples/.svn
+
+# Install zhangyu2ustc/GCN_fmri_decoding dependencies
+COPY requirements.txt /
+RUN pip install --requirement /requirements.txt
 
 WORKDIR "/examples"
