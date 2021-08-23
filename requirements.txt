@@ -42,7 +42,7 @@ nbrsessionproxy==0.6.1
 nbserverproxy==0.5.1
 nibabel==2.2.1
 nilearn==0.5.2
-notebook==6.1.5
+notebook==6.4.1
 numexpr==2.6.4
 pandocfilters==1.4.2
 parso==0.1.1
